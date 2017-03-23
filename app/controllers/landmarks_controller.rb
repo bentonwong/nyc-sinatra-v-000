@@ -11,4 +11,14 @@ class LandmarksController < ApplicationController
     erb :'/landmarks/new'
   end
 
+  post '/landmarks' do
+    @landmark = Landmark.create(params["landmark"])
+    @landmark.save
+  end
+
+  get '/landmarks' do
+    @landmarks = Landmark.all.map {|landmark_obj| landmark_obj.name}
+    erb :'/landmark/index'
+  end
+
 end
