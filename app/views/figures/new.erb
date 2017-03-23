@@ -2,30 +2,30 @@
 <html>
  <head>
   <meta charset="UTF-8">
-  <title>New Song</title>
+  <title>New Figure</title>
  </head>
  <body>
 
+  <form action="/figures" method="post">
+      Figure Name:
+      <br><input type="text" id="figure_name" name="figure[name]" size="75"></input>
 
-  <form action="/songs" method="post">
-      Song Name:
+      Title IDs:
+      <br><input type="checkbox" id="title_ids" name="figure[title_ids][]" size="75"></input>
 
-      <br><input type="text" id="Name" name="song[name]" size="75"></input>
+      Landmark IDs:
+      <br><input type="checkbox" id="landmark_ids" name="figure[landmark_ids][]" size="75"></input>
+
+      Landmark Name:
+      <br><input type="text" id="landmark_name" name="landmark[name]" size="75"></input>
+
+      Title Name:
+      <br><input type="text" id="title_name" name="title[name]" size="75"></input>
 
       <br></br>
-      Genre Name:
 
-      <ul style="list-style: none;"><% Genre.all.each do |genre| %>
-          <li><input id="<%= genre.name %>" type="checkbox" name="genres[]" value="<%= genre.id %>"><%= genre.name %></li>
-      <% end %></ul>
-
-      Artist Name:<br><input id="Artist Name" type="text" name="artist[name]" size="75"></input>
-
-      <br></br>
-
-      <input type="submit" value="Create">
+      <input type="submit" value="Create New Figure">
     </form>
-
 
   </body>
 </html>
