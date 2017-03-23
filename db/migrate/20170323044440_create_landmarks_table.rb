@@ -3,7 +3,7 @@ class CreateLandmarksTable < ActiveRecord::Migration
     create_table :landmarks do |t|
      t.string :name
      t.integer :figure_id
-     t.year_completed :integer
+     t.integer :year_completed
     end
   end
 end
