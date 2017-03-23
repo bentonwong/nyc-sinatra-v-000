@@ -30,7 +30,7 @@ class FiguresController < ApplicationController
     if !params["landmark"]["name"].empty?
       @figure.landmarks << Landmark.find_or_create_by(params["landmark"])
     elsif !!params["figure"]["landmark_ids"]
-      @figure.titles << params["figure"]["landmark_ids"].map {|l_id| Landmark.find_by_id(l_id)}
+      @figure.landmarks << params["figure"]["landmark_ids"].map {|l_id| Landmark.find_by_id(l_id)}
     end
     @figure.save
   end
@@ -38,6 +38,27 @@ class FiguresController < ApplicationController
   get '/figures/:id' do
     @figure = Figure.find_by_id(params[:id])
     erb :'/figures/show'
+  end
+
+  get '/figures/:id/edit' do
+    @figure = Figure.find_by_id(params[:id])
+    erb :'/figures/edit'
+  end
+
+  post '/figures/:id' do
+    @figure = Figure.find_by_id(params[:id])
+    if !params["title"]["name"].empty?
+      @figure.titles << Title.find_or_create_by(params["title"])
+    elsif !!params["figure"]["title_ids"]
+      @figure.titles << params["figure"]["title_ids"].map {|t_id| Title.find_by_id(t_id)}
+    end
+    if !params["landmark"]["name"].empty?
+      @figure.landmarks << Landmark.find_or_create_by(params["landmark"])
+    elsif !!params["figure"]["landmark_ids"]
+      @figure.landmarks << params["figure"]["landmark_ids"].map {|l_id| Landmark.find_by_id(l_id)}
+    end
+    @figure.save
+    redirect to "/figures/#{params[:id]}"
   end
 
 end

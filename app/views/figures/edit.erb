@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Editing Figure</title>
+ </head>
+  <body>
+  <h1><%= @figure.name %></h1>
+  <form action="/figures/<%= @figure.id %>" method="post">
+      Enter new figure name:
+      <br><input type="text" id="figure_name" name="figure[name]" size="75" value ="<%= @figure.name%>"></input><br><br>
+
+      Enter new title(s):
+      <ul style="list-style: none;"><% Title.all.each do |title| %>
+        <li><input type="checkbox" name="figure[title_ids][]" id="title_<%= title.id %>" value="<%= title.id %>" <%= 'checked' if @figure.titles.map{|x| x.name}.include?(title.name)%>><%= title.name %></input></li>
+      <% end %></ul>
+
+      or enter new title here:
+      <br><input type="text" id="new_title" name="title[name]" size="75"></input>
+      <br></br>
+
+      Landmarks:
+      <ul style="list-style: none;"><% Landmark.all.each do |landmark| %>
+        <li><input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%= landmark.id %>" value="<%= landmark.id %>" <%= 'checked' if @figure.landmarks.map{|x| x.name}.include?(landmark.name)%>><%= landmark.name %></input></li>
+      <% end %></ul>
+
+      or enter new landmark here:
+      <br><input type="text" id="new_landmark" name="landmark[name]" size="75"></input><br><br>
+
+      <input type="submit" value="Edit Figure">
+    </form>
+
+  </body>
+</html>
