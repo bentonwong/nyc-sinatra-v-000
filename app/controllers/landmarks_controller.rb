@@ -17,8 +17,8 @@ class LandmarksController < ApplicationController
   end
 
   get '/landmarks' do
-    @landmarks = Landmark.all.map {|landmark_obj| landmark_obj.name}
-    erb :'/landmark/index'
+    @landmarks = Landmark.all
+    erb :'/landmarks/index'
   end
 
 end
