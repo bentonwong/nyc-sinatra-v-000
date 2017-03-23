@@ -1,3 +1,6 @@
+require_relative '../../config/environment'
+require 'pry'
+
 class FiguresController < ApplicationController
 
   register Sinatra::ActiveRecordExtension
@@ -5,12 +8,12 @@ class FiguresController < ApplicationController
   set :views, Proc.new { File.join(root, "../views/") }
 
   get '/' do
-    @figures = Figure.all
-    erb :'/figures/index'
+    redirect to '/figures'
   end
 
   get '/figures' do
-    redirect to "/"
+    @figures = Figure.all.map {|figure_obj| figure_obj.name}
+    erb :'/figures/index'
   end
 
   get '/figures/new' do
@@ -30,7 +33,6 @@ class FiguresController < ApplicationController
       @figure.titles << params["figure"]["landmark_ids"].map {|l_id| Landmark.find_by_id(l_id)}
     end
     @figure.save
-
   end
 
 end

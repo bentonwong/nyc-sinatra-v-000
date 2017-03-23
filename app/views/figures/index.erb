@@ -5,11 +5,9 @@
   <title>Figures List</title>
  </head>
   <body>
-
     <h1>Figures List</h1>
-    <ul style="list-style: none;"><%= Figure.all.each do |figure| %>
-      <li><%= figure.name %></li>
+    <ul style="list-style: none;"><% @figures.each do |figure| %>
+      <li><%= figure %></li>
     <%end%></ul>
-
   </body>
 </html>
