@@ -31,4 +31,17 @@ class LandmarksController < ApplicationController
     erb :'/landmarks/edit'
   end
 
+  post '/landmarks/:id' do
+    @landmark = Landmark.find_by_id(params[:id])
+    binding.pry
+    if !params["landmark"]["name"].empty?
+      @landmark.name = params["landmark"]["name"]
+    end
+    if !params["landmark"]["year_completed"].empty?
+      @landmark
+    end
+    @landmark.save
+    redirect to "/figures/#{params[:id]}"
+  end
+
 end
