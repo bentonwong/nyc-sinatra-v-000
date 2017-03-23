@@ -8,10 +8,10 @@
   <h1><%= @landmark.name %></h1>
   <form action="/landmarks/<%= @landmark.id %>" method="post">
       Enter new landmark name:
-      <br><input type="text" id="landmark_name" name="landmark[name]" size="75" value ="<%= @landmark.name %>"></input><br><br>
+      <br><input type="text" id="name" name="landmark[name]" size="75" value ="<%= @landmark.name %>"></input><br><br>
 
       Enter new completion year:
-      <br><input type="number" id="landmark_year_completed" name="landmark[year_completed]" size="75" value ="<% @landmark.year_completed %>"></input><br><br>
+      <br><input type="number" id="year_completed" name="landmark[year_completed]" size="75" value ="<% @landmark.year_completed %>"></input><br><br>
 
       <input type="submit" value="Edit Landmark">
     </form>
