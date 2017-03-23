@@ -2,27 +2,30 @@
 <html>
  <head>
   <meta charset="UTF-8">
-  <title>New Figure</title>
+  <title>Create New Figure</title>
  </head>
- <body>
+  <body>
 
   <form action="/figures" method="post">
-      Figure Name:
-      <br><input type="text" id="figure_name" name="figure[name]" size="75"></input>
+      Enter new figure name:
+      <br><input type="text" id="figure_name" name="figure[name]" size="75"></input><br><br>
 
-      Title IDs:
-      <br><input type="checkbox" id="title_ids" name="figure[title_ids][]" size="75"></input>
+      Titles:
+      <ul style="list-style: none;"><% Title.all.each do |title| %>
+        <li><input type="checkbox" name="figure[title_ids][]" id="title_<%= title.id %>" value="<%= title.id %>"><%= title.name %></input></li>
+      <% end %></ul>
 
-      Landmark IDs:
-      <br><input type="checkbox" id="landmark_ids" name="figure[landmark_ids][]" size="75"></input>
-
-      Landmark Name:
-      <br><input type="text" id="landmark_name" name="landmark[name]" size="75"></input>
-
-      Title Name:
+      or enter new title here:
       <br><input type="text" id="title_name" name="title[name]" size="75"></input>
-
       <br></br>
+
+      Landmarks:
+      <ul style="list-style: none;"><% Landmark.all.each do |landmark| %>
+        <li><input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%= landmark.id %>" value="<%= landmark.id %>"><%= landmark.name %></input></li>
+      <% end %></ul>
+
+      or enter new landmark here:
+      <br><input type="text" id="landmark_name" name="landmark[name]" size="75"></input><br><br>
 
       <input type="submit" value="Create New Figure">
     </form>

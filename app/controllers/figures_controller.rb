@@ -5,11 +5,16 @@ class FiguresController < ApplicationController
   set :views, Proc.new { File.join(root, "../views/") }
 
   get '/' do
-    erb :index
+    erb :'landmarks/index'
   end
 
   get '/figures/new' do
-    erb :new
+    erb :'figures/new'
+  end
+
+  post '/figures' do
+    @figure = Figure.create(params["figure"])
+    
   end
 
 end

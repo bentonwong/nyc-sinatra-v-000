@@ -12,6 +12,7 @@ require 'sinatra'
 require_relative 'app/controllers/figures_controller.rb'
 require_relative 'app/controllers/landmarks_controller.rb'
 
+use Rack::MethodOverride
 use LandmarksController
 use FiguresController
 run ApplicationController
