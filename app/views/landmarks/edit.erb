@@ -5,7 +5,7 @@
   <title>Editing Landmark</title>
  </head>
   <body>
-  <h1><%= @landmark.name %></h1>
+  <h1><%= @landmark.name %> | <%= @landmark.year_completed.to_s %></h1>
   <form action="/landmarks/<%= @landmark.id %>" method="post">
       Enter new landmark name:
       <br><input type="text" id="name" name="landmark[name]" size="75" value ="<%= @landmark.name %>"></input><br><br>

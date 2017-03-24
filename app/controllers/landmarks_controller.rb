@@ -37,7 +37,7 @@ class LandmarksController < ApplicationController
       @landmark.name = params["landmark"]["name"]
     end
     if !params["landmark"]["year_completed"].empty?
-      @landmark.year_completed = params["landmark"]["year_completed"]
+      @landmark.year_completed = params["landmark"]["year_completed"].to_i
     end
     @landmark.save
     redirect to "/landmarks/#{params[:id]}"
